@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
-import "./SneakerType.css";
+import "./SneakerRarity.css";
 
-const SNEAKERS_TYPE = [
-    'RANGER',
-    'HIKER',
-    'COACHER',
-    'SPRINTER',
+const SNEAKERS_RARITY = [
+    'COMMON',
+    'UNCOMMON',
+    'RARE',
+    'EPIC',
+    'LEGENDARY',
 ];
 
-export default function SneakerType() {
+export default function SneakerRarity() {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {
@@ -19,7 +20,7 @@ export default function SneakerType() {
 
     return (
         <Container fluid>
-            SNEAKERS:
+            QUALITY:
             <Carousel 
                 indicators={false} 
                 slide={false}
@@ -28,9 +29,12 @@ export default function SneakerType() {
                 onSelect={handleSelect}
             >
                 {
-                    SNEAKERS_TYPE.map((item) => {
+                    SNEAKERS_RARITY.map((item, index) => {
                         return (
-                            <Carousel.Item className="sneaker-type-item">
+                            <Carousel.Item 
+                                key={`sneaker-rarity-${index}`}
+                                className="sneaker-rarity-item"
+                            >
                                 {item}
                             </Carousel.Item>
                         )
