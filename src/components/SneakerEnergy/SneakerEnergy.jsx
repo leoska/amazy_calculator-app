@@ -9,7 +9,7 @@ export default function SneakerEnergy() {
                 ENERGY:
             </Form.Label>
             <Form.Check 
-                type={type}
+                type="checkbox"
                 id={`default-${type}`}
             />
         </Form.Group>

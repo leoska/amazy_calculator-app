@@ -1,0 +1,15 @@
+.sneaker-stats {
+
+}
+
+.sneaker-stats_table-block {
+    width: 32px;
+    height: 24px;
+    border-width: 1px;
+    border-color: #575757;
+    border-style: solid;
+}
+
+.sneaker-stats_table-progress_column {
+    width: 160px;
+}

@@ -1,9 +1,10 @@
 import "./SneakerTable.css";
-import SneakerContent from "../SneakerContent/SneakerContent";
 import SneakerType from '../SneakerType/SneakerType';
 import SneakerRarity from '../SneakerRarity/SneakerRarity';
 import SneakerLevel from '../SneakerLevel/SneakerLevel';
 import SneakerEnergy from "../SneakerEnergy/SneakerEnergy";
+import SneakerGems from "../SneakerGems/SneakerGems";
+import SneakerStats from "../SneakerStats/SneakerStats";
 
 export default function SneakerTable() {
     return (
@@ -16,9 +17,11 @@ export default function SneakerTable() {
             </div>
             <div className="sneaker-table_content">
                 <div className="sneaker-table_content-row_one">
+                    <SneakerGems/>
+                    <SneakerStats/>
                 </div>
                 <div className="sneaker-table_content-row_two">
-                    <SneakerContent/>
+                    <img src="sneaker.png"/>
                 </div>
                 <div className="sneaker-table_content-row_three">
                 </div>
