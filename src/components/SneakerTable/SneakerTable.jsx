@@ -5,6 +5,7 @@ import SneakerLevel from '../SneakerLevel/SneakerLevel';
 import SneakerEnergy from "../SneakerEnergy/SneakerEnergy";
 import SneakerGems from "../SneakerGems/SneakerGems";
 import SneakerStats from "../SneakerStats/SneakerStats";
+import SneakerCosts from "../SneakerCosts/SneakerCosts";
 
 export default function SneakerTable() {
     return (
@@ -24,6 +25,7 @@ export default function SneakerTable() {
                     <img src="sneaker.png"/>
                 </div>
                 <div className="sneaker-table_content-row_three">
+                    <SneakerCosts/>
                 </div>
             </div>
         </div>

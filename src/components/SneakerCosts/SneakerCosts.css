@@ -1,0 +1,23 @@
+.sneaker-costs {
+    height: 100%;
+}
+
+.sneaker-costs > table {
+    border-spacing: 0;
+}
+
+.sneaker-costs > table > tr {
+    height: 16px;
+}
+
+.sneaker-costs_table-title {
+    font-size: 12px;
+    width: 320px;
+    height: 16px;
+}
+
+.sneaker-costs_table-value {
+    font-size: 12px;
+    width: 32px;
+    height: 16px;
+}
