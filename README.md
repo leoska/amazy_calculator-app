@@ -1,3 +1,5 @@
+https://amazy-1.gitbook.io/whitepaper-ru/vnutrennyaya-mekhanika-prilozheniya/parametry-krossovok-i-uluchshenie
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

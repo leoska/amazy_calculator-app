@@ -10,6 +10,14 @@
     border-style: solid;
 }
 
+.sneaker-stats_tabke-input_column {
+    margin-right: 24px;
+}
+
 .sneaker-stats_table-progress_column {
     width: 160px;
+}
+
+.sneaker-stats-input {
+    width: 128px;
 }

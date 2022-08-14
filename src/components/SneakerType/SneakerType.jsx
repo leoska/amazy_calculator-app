@@ -28,9 +28,12 @@ export default function SneakerType() {
                 onSelect={handleSelect}
             >
                 {
-                    SNEAKERS_TYPE.map((item) => {
+                    SNEAKERS_TYPE.map((item, index) => {
                         return (
-                            <Carousel.Item className="sneaker-type-item">
+                            <Carousel.Item 
+                                className="sneaker-type-item"
+                                key={`sneaker-type-item-${index}`}
+                            >
                                 {item}
                             </Carousel.Item>
                         )

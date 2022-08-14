@@ -18,7 +18,7 @@ export default function SneakerTable() {
             </div>
             <div className="sneaker-table_content">
                 <div className="sneaker-table_content-row_one">
-                    <SneakerGems/>
+                    {/* <SneakerGems/> */}
                     <SneakerStats/>
                 </div>
                 <div className="sneaker-table_content-row_two">

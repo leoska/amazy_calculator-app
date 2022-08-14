@@ -3,6 +3,10 @@ import SneakerTable from '../SneakerTable/SneakerTable';
 import SneakerType from '../SneakerType/SneakerType';
 import SneakerRarity from '../SneakerRarity/SneakerRarity';
 import SneakerLevel from '../SneakerLevel/SneakerLevel';
+import SneakerEnergy from '../SneakerEnergy/SneakerEnergy';
+import SneakerGems from '../SneakerGems/SneakerGems';
+import SneakerStats from '../SneakerStats/SneakerStats';
+import SneakerCosts from '../SneakerCosts/SneakerCosts';
 import './Calculator.css';
 
 export default function Calculator() {
@@ -16,6 +20,11 @@ export default function Calculator() {
                     <SneakerType/>
                     <SneakerRarity/>
                     <SneakerLevel/>
+                    <SneakerEnergy/>
+                    {/* <SneakerGems/> */}
+                    <SneakerStats/>
+                    <img src="sneaker.png" alt=""/>
+                    <SneakerCosts/>
                 </Col>
             </Row>
         </Container>
