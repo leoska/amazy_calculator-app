@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
+import { useSelector, useDispatch } from 'react-redux';
+import { setQuality, selectQuality } from '../../store/calculator/calculatorSlice';
 import "./SneakerRarity.css";
 
 const SNEAKERS_RARITY = [
@@ -12,11 +14,18 @@ const SNEAKERS_RARITY = [
 ];
 
 export default function SneakerRarity() {
-    const [index, setIndex] = useState(0);
+    // Слушаем изменение quality
+    const quality = useSelector(selectQuality);
 
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-    };
+     // Что бы обновить store необходимо вызвать метод dispatch().
+    const dispatch = useDispatch();
+
+    const activeIndex = SNEAKERS_RARITY.indexOf(quality.toUpperCase());
+    const _onSelectIndex = (selectedIndex) => { 
+        return dispatch(setQuality({
+            quality: SNEAKERS_RARITY[selectedIndex].toLowerCase(),
+        }));
+    }
 
     return (
         <Container fluid>
@@ -25,8 +34,8 @@ export default function SneakerRarity() {
                 indicators={false} 
                 slide={false}
                 interval={null}
-                activeIndex={index} 
-                onSelect={handleSelect}
+                activeIndex={activeIndex} 
+                onSelect={_onSelectIndex}
             >
                 {
                     SNEAKERS_RARITY.map((item, index) => {
