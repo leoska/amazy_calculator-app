@@ -15,6 +15,8 @@ export default function SneakerStats() {
     return (
         <div className="sneaker-stats">
             <table>
+                <thead>
+                </thead>
                 <tbody>
                     <tr>
                         <td className="sneaker-stats_tabke-input_column">
