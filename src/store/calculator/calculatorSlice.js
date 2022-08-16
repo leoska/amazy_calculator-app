@@ -15,19 +15,22 @@ const initialState = {
         performance: {
             value: 0,
             base: 0,
-
+            coef: 0,
         },
         fortune: {
             value: 0,
             base: 0,
+            coef: 0,
         },
         joy: {
             value: 0,
             base: 0,
+            coef: 0,
         },
         durability: {
             value: 0,
             base: 0,
+            coef: 0,
         },
     },
     points: 0,
@@ -43,12 +46,18 @@ export const calculatorSlice = createSlice({
             const { level } = action.payload;
 
             state.level = level;
-            state.maxPoints = SNEAKER_POINTS_BY_LEVEL[state.quality];
+            state.maxPoints = level * SNEAKER_POINTS_BY_LEVEL[state.quality];
 
             const newStats = Object.assign({}, state.stats);
 
             for (const key of Object.keys(newStats)) {
-                newStats[key].base = SNEAKER_BASE_POINTS[state.quality].min;
+                if (newStats[key].base < SNEAKER_BASE_POINTS[state.quality].min)
+                    newStats[key].base = SNEAKER_BASE_POINTS[state.quality].min;
+
+                if (newStats[key].base > SNEAKER_BASE_POINTS[state.quality].max)
+                    newStats[key].base = SNEAKER_BASE_POINTS[state.quality].max;
+
+                newStats[key].coef = SNEAKER_BASE_POINTS[state.quality].min * 0.1 * level;
             }
 
             state.stats = newStats;
@@ -77,15 +86,49 @@ export const calculatorSlice = createSlice({
 
             for (const key of Object.keys(newStats)) {
                 newStats[key].base = SNEAKER_BASE_POINTS[state.quality].min;
+                newStats[key].coef = SNEAKER_BASE_POINTS[state.quality].min * 0.1 * state.level;
             }
 
             state.stats = newStats;
         },
 
 
-        setStat: (state, action) => {
-            
-        }
+        setBaseStat: (state, action) => {
+            const { name, value } = action.payload;
+
+            if (value < SNEAKER_BASE_POINTS[state.quality].min)
+                value = SNEAKER_BASE_POINTS[state.quality].min;
+
+            if (value > SNEAKER_BASE_POINTS[state.quality].max)
+                value = SNEAKER_BASE_POINTS[state.quality].max;
+
+            const newStats = Object.assign({}, state.stats);
+            newStats[name].base = value;
+            state.stats = newStats;
+        },
+
+        setValueStat: (state, action) => {
+            const { name, value } = action.payload;
+
+            if (value < 0 || value > state.maxPoints)
+                return;
+
+            // Calculate current points
+            let sum = 0;
+            for (const key of Object.keys(state.stats)) {
+                sum += state.stats[key].value;
+            }
+
+            const newSum = (sum - state.stats[name].value) + value;
+
+            if (newSum <= state.maxPoints && newSum >= 0) {
+                const newStats = Object.assign({}, state.stats);
+                newStats[name].value = value;
+                state.stats = newStats;
+
+                state.points = newSum;
+            }
+        },
     }
 });
 
@@ -99,7 +142,7 @@ export const selectPoints = (state) => state.calculator.points;
 export const selectMaxPoints = (state) => state.calculator.maxPoints;
 
 // Actions
-export const { setLevel, setQuality, setStat } = calculatorSlice.actions;
+export const { setLevel, setEnergy, setQuality, setBaseStat, setValueStat } = calculatorSlice.actions;
 
 // Export default reducer for store
 export default calculatorSlice.reducer;
